@@ -1,9 +1,10 @@
+import React from "react";
 import { useCallback, useEffect, useState } from "react";
 
 // components
 import StartScreen from "./components/StartScreen";
 import Game from "./components/Game";
-import GameOver from "./components/GameOver.jsx";
+import GameOver from "./components/GameOver";
 
 // styles
 import "./App.css";
@@ -141,23 +142,24 @@ function App() {
   }, [guessedLetters, letters, startGame]);
 
   return (
-    <div className="App">
-      {gameStage === "start" && <StartScreen startGame={startGame} />}
-      {gameStage === "game" && (
-        <Game
-          verifyLetter={verifyLetter}
-          pickedWord={pickedWord}
-          pickedCategory={pickedCategory}
-          letters={letters}
-          guessedLetters={guessedLetters}
-          wrongLetters={wrongLetters}
-          guesses={guesses}
-          score={score}
-        />
-      )}
-      {gameStage === "end" && <GameOver retry={retry} score={score} />}
-    </div>
-  );
+      <div className="App">
+        {gameStage === "start" && <StartScreen startGame={startGame} />}
+        {gameStage === "game" && (
+          <Game
+            verifyLetter={verifyLetter}
+            pickedWord={pickedWord}
+            pickedCategory={pickedCategory}
+            letters={letters}
+            guessedLetters={guessedLetters}
+            wrongLetters={wrongLetters}
+            guesses={guesses}
+            score={score}
+          />
+        )}
+        {gameStage === "end" && <GameOver retry={retry} score={score} />}
+      </div>
+    );
+
 }
 
 export default App;
